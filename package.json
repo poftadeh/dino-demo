@@ -1,0 +1,21 @@
+{
+  "name": "dinodemo",
+  "version": "1.0.0",
+  "description": "Dino game demonstration with Selenium & ML",
+  "main": "index.js",
+  "dependencies": {
+    "chromedriver": "^2.46.0",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint"
+  },
+  "author": "Pouya Oftadeh",
+  "license": "ISC"
+}
