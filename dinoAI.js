@@ -14,7 +14,8 @@ const scope = () => {
 
     learn() {
       if (this.horizon.obstacles[0].type === 'CACTUS_SMALL') {
-        this.cactusSmallProximity = this.runner.tRex.midair ? this.cactusSmallProximity - 1 : this.cactusSmallProximity + 1; 
+        this.cactusSmallProximity = this.runner.tRex.midair
+          ? this.cactusSmallProximity - 1 : this.cactusSmallProximity + 1;
       }
     }
 
