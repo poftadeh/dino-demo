@@ -1,8 +1,4 @@
 const scope = () => {
-
-
-  const CATCTUS_CRITICAL_DISTANCE = 85;
-
   class DinoAI {
     constructor(runner) {
       this.jumpKeyEvent = new KeyboardEvent('keydown', { keyCode: 32, which: 32 });
@@ -11,6 +7,15 @@ const scope = () => {
       this.horizon = runner.instance_.horizon;
       this.jump = this.jump.bind(this);
       this.run = this.run.bind(this);
+      this.cactusSmallProximity = 150;
+      this.cactusLargeProximity = 150;
+      this.pterodactylProximity = 150;
+    }
+
+    learn() {
+      if (this.horizon.obstacles[0].type === 'CACTUS_SMALL') {
+        this.cactusSmallProximity = this.runner.tRex.midair ? this.cactusSmallProximity - 1 : this.cactusSmallProximity + 1; 
+      }
     }
 
     run() {
@@ -22,25 +27,29 @@ const scope = () => {
             break;
           case 'PTERODACTYL':
             this.handlePterodactyl();
+            break;
           default:
+            console.log('4This should never print');
         }
+      } else if (this.runner.crashed) {
+        this.learn();
       }
     }
 
     handleCactus() {
       // jump, but not if already jumping
-      if (this.horizon.obstacles[0].xPos <= 100) {
+      if (this.horizon.obstacles[0].xPos <= CACTUS_CLOSE_PROXIMITY) {
         this.jump();
       }
     }
 
     handlePterodactyl() {
       // bird is high
-      if (this.horizon.obstacles[0].yPos === 100 && this.horizon.obstacles[0].xPos <= 100) {
+      if (this.horizon.obstacles[0].yPos === 100 && this.horizon.obstacles[0].xPos <= PTERODACTYL_CLOSE_PROXIMITY) {
         this.jump();
         // bird is eye-level
-      } else if (this.horizon.obstacles[0].yPos === 75 && this.horizon.obstacles[0].xPos <= 100) {
-        this.duck();
+      } else if (this.horizon.obstacles[0].yPos === 75 && this.horizon.obstacles[0].xPos <= PTERODACTYL_CLOSE_PROXIMITY) {
+        this.jump();
       }
     }
 
@@ -54,7 +63,9 @@ const scope = () => {
     duck() {
       console.log('induck');
       if (!this.runner.tRex.ducking) {
-        document.dispatchEvent(this.duckKeyEvent);
+        console.log('hasducked!');
+        document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 40, which: 40 }));
+        setTimeout(document.dispatchEvent.apply(new KeyboardEvent('keyup', { keyCode: 40, which: 40 }), 10000));
       }
     }
 
@@ -68,7 +79,8 @@ const scope = () => {
   }
 
   const dino = new DinoAI(Runner);
-
+  // dino.duck();
+  // dino.jump();
   setInterval(dino.run, 0);
 
   // const jumpthing = () => {
