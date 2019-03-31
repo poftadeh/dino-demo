@@ -1,5 +1,63 @@
-.foo {
-  height: 15vh;
-  border: 3px solid pink;
-  background-color: blue;
+:root {
+  --text-color: #ecf0f1;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.hud {
+  display: flex;
+  flex-direction: column;
+  height: 17rem;
+  width: 100rem;
+  background-color: #34495e;
+  color: var(--text-color);
+  margin: 0 auto;
+  border-radius: 1rem;
+  /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
+}
+
+.hud-title {
+  text-align: center;
+  font-size: 3rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid #7f8c8d;
+}
+
+.panel-container {
+  flex: 1;
+  display: flex;
+  border: 2px solid green;
+}
+
+.stats-panel {
+  border: 2px solid pink;
+  width: 25%;
+}
+
+.stats-panel-title {
+  font-size: 1.7rem;
+  border: 1px solid red;
+  text-align: center;
+}
+
+.stat-line {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  border: 1px solid lightblue;
+}
+
+.bar:nth-of-type(1) {
+  margin-left: .6rem;
+}
+
+.bar {
+  background-color: var(--text-color);
+  height: .5rem;
+  width: .5rem;
+  display: inline-block;
+  border: 2px solid var(--text-color);
 }
