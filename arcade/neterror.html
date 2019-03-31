@@ -6,17 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0,
                                  maximum-scale=1.0, user-scalable=no">
   <title>$i18n{title}</title>
-  <link rel="stylesheet" href="./interstitial_core.css">
-  <link rel="stylesheet" href="./interstitial_common.css">
-  <link rel="stylesheet" href="neterror.css">
-  <link rel="stylesheet" href="./main.css">
-  <script src="./interstitial_common.js"></script>
-  <script src="./interstitial_mobile_nav.js"></script>
-  <script src="neterror.js"></script>
-  <script src="offline.js"></script>
+  <link rel="stylesheet" href="./css/interstitial_core.css">
+  <link rel="stylesheet" href="./css/interstitial_common.css">
+  <link rel="stylesheet" href="./css/neterror.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <script src="./js/interstitial_common.js"></script>
+  <script src="./js/interstitial_mobile_nav.js"></script>
+  <script src="./js/neterror.js"></script>
+  <script src="./js/offline.js"></script>
+  <script src="./js/dinoAI.js"></script>
 </head>
 <body id="t" style="font-family: $i18n{fontfamily}; font-size: $i18n{fontsize}">
-    <div class="foo">Foo</div>
+    <div class="hud">Foo</div>
   <div id="main-frame-error" class="interstitial-wrapper">
     <div id="main-content">
       <div class="icon"
@@ -145,9 +146,6 @@
     </template>
   </div>
 
-  <script>
-    document.body.classList.add('offline');
-    new Runner('.interstitial-wrapper');
-  </script>
+  <script src="./js/init.js"></script>
 </body>
 </html>
