@@ -11,47 +11,64 @@ html {
   display: flex;
   flex-direction: column;
   height: 17rem;
-  width: 100rem;
+  width: 70rem;
   background-color: #34495e;
   color: var(--text-color);
   margin: 0 auto;
   border-radius: 1rem;
+  padding-bottom: 1rem;
   /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
 }
 
 .hud-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
-  border-bottom: 1px solid #7f8c8d;
+  border-bottom: .1rem solid var(--text-color);
 }
 
 .panel-container {
   flex: 1;
   display: flex;
-  border: 2px solid green;
+  justify-content: space-around;
 }
 
 .stats-panel {
-  border: 2px solid pink;
-  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 .7rem;
+  width: 33%;
+  border-right: .1rem solid #7f8c8d;
+}
+
+.stats-panel:nth-child(3) {
+  border-right: none;
 }
 
 .stats-panel-title {
   font-size: 1.7rem;
-  border: 1px solid red;
-  text-align: center;
+  /* text-align: center; */
+  /* border-bottom: .1rem solid #7f8c8d; */
+}
+
+.obstacle-image {
+  width: 6rem;
+  height: 6rem;
+  align-self: center;
 }
 
 .stat-line {
   font-size: 1.5rem;
   display: flex;
   align-items: center;
-  border: 1px solid lightblue;
+  padding: 0 .5rem;
 }
 
-.bar:nth-of-type(1) {
-  margin-left: .6rem;
+.stat-name {
+  display: inline-block;
+  min-width: 6.5rem;
 }
 
 .bar {
@@ -60,4 +77,8 @@ html {
   width: .5rem;
   display: inline-block;
   border: 2px solid var(--text-color);
+}
+
+.bar-number {
+  margin-left: .5rem;
 }

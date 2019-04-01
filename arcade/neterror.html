@@ -1,5 +1,6 @@
 <!doctype html>
 <html dir="$i18n{textdirection}" lang="$i18n{language}">
+
 <head>
   <meta charset="utf-8">
   <meta name="theme-color" content="#fff">
@@ -18,29 +19,64 @@
   <script src="./js/offline.js"></script>
   <script src="./js/dinoAI.js"></script>
 </head>
+
 <body id="t" style="font-family: $i18n{fontfamily}; font-size: $i18n{fontsize}">
-    <div class="hud">
-      <div class="hud-title">WebDriver Playing Chrome Dino Game</div>
-      <div class="panel-container">
-        <div class="stats-panel">
-          <div class="stats-panel-title">T-Rex:</div>
-          <div class="stat-line">
-            Jumps:<span class="bar"></span>
-          </div>
+  
+  <div class="hud">
+    <div class="hud-title">WebDriver Playing Chrome Dino Game</div>
+    <div class="panel-container">
+      <div class="stats-panel">
+        <div class="stats-panel-title">T-Rex Statistics:</div>
+        <div class="stat-line" id="jump-stats">
+          <span class="stat-name">Jumps:</span><span class="bar"></span><span class="bar-number">23</span>
         </div>
-        <div class="stats-panel"></div>
-        <div class="stats-panel"></div>
-        <div class="stats-panel"></div>
+        <div class="stat-line" id="duck-stats">
+          <span class="stat-name">Ducks:</span><span class="bar"></span><span class="bar-number">23</span>
+        </div>
+        <div class="stat-line" id="crash-stats">
+          <span class="stat-name">Crashes:</span><span class="bar"></span><span class="bar-number">23</span>
+        </div>
+        <div class="stat-line" id="speed-stats">
+          <span class="stat-name">Speed:</span><span class="bar"></span><span class="bar-number">23</span>
+        </div>
       </div>
+      <div class="stats-panel">
+          <div class="stats-panel-title">Next Obstacle:</div>
+          <img class="obstacle-image" src="./images/cactus.svg" alt="">
+          <div class="stat-line" id="duck-stats">
+            <span class="stat-name">Ducks:</span><span class="bar"></span><span class="bar-number">23</span>
+          </div>
+          <div class="stat-line" id="crash-stats">
+            <span class="stat-name">Crashes:</span><span class="bar"></span><span class="bar-number">23</span>
+          </div>
+      </div>
+      <div class="stats-panel">
+          <div class="stats-panel-title">T-Rex Statistics:</div>
+          <div class="stat-line" id="jump-stats">
+            <span class="stat-name">Jumps:</span><span class="bar"></span><span class="bar-number">23</span>
+          </div>
+          <div class="stat-line" id="duck-stats">
+            <span class="stat-name">Ducks:</span><span class="bar"></span><span class="bar-number">23</span>
+          </div>
+          <div class="stat-line" id="crash-stats">
+            <span class="stat-name">Crashes:</span><span class="bar"></span><span class="bar-number">23</span>
+          </div>
+          <div class="stat-line" id="speed-stats">
+            <span class="stat-name">Speed:</span><span class="bar"></span><span class="bar-number">23</span>
+          </div>
+      </div>
+
     </div>
+  </div>
+  </div>
   <div id="main-frame-error" class="interstitial-wrapper">
     <div id="main-content">
-      <div class="icon"
-          jseval="updateIconClass(this.classList, iconClass)" alt=""></div>
+      <div class="icon" jseval="updateIconClass(this.classList, iconClass)" alt=""></div>
       <div id="main-message">
         <h1>
           <span jsselect="heading" jsvalues=".innerHTML:msg"></span>
-          <a id="error-information-button" class="hidden" onclick="toggleErrorInformationPopup();" style="display:none"></a>
+          <a id="error-information-button" class="hidden" onclick="toggleErrorInformationPopup();"
+            style="display:none"></a>
         </h1>
         <p jsselect="summary" jsvalues=".innerHTML:msg"></p>
         <!--The suggestion list and error code are normally presented inline,
@@ -52,7 +88,7 @@
             <div id="error-information-popup-box">
               <div id="error-information-popup-content">
                 <div id="suggestions-list" style="display:none"
-                    jsdisplay="(suggestionsSummaryList && suggestionsSummaryList.length)">
+                  jsdisplay="(suggestionsSummaryList && suggestionsSummaryList.length)">
                   <p jsvalues=".innerHTML:suggestionsSummaryListHeader"></p>
                   <ul jsvalues=".className:suggestionsSummaryList.length == 1 ? 'single-suggestion' : ''">
                     <li jsselect="suggestionsSummaryList" jsvalues=".innerHTML:summary"></li>
@@ -69,36 +105,29 @@
         <div id="diagnose-frame" class="hidden"></div>
         <div id="download-links-wrapper" class="hidden" style="display:none">
           <div id="download-link-wrapper">
-            <a id="download-link" class="link-button"
-                onclick="downloadButtonClick()" jsselect="downloadButton"
-                jscontent="msg" jsvalues=".disabledText:disabledMsg">
+            <a id="download-link" class="link-button" onclick="downloadButtonClick()" jsselect="downloadButton"
+              jscontent="msg" jsvalues=".disabledText:disabledMsg">
             </a>
           </div>
           <div id="download-link-clicked-wrapper" class="hidden">
-            <div id="download-link-clicked" class="link-button"
-                jsselect="downloadButton" jscontent="disabledMsg">
+            <div id="download-link-clicked" class="link-button" jsselect="downloadButton" jscontent="disabledMsg">
             </div>
           </div>
         </div>
         <div id="offline-content-list" class="list-hidden" hidden>
-          <div id="offline-content-list-visibility-card"
-              onclick="toggleOfflineContentListVisibility(true)">
-            <div id="offline-content-list-title"
-                jsselect="offlineContentList" jscontent="title">
+          <div id="offline-content-list-visibility-card" onclick="toggleOfflineContentListVisibility(true)">
+            <div id="offline-content-list-title" jsselect="offlineContentList" jscontent="title">
             </div>
             <div>
-              <div id="offline-content-list-show-text"
-                  jsselect="offlineContentList" jscontent="showText">
+              <div id="offline-content-list-show-text" jsselect="offlineContentList" jscontent="showText">
               </div>
-              <div id="offline-content-list-hide-text"
-                  jsselect="offlineContentList" jscontent="hideText">
+              <div id="offline-content-list-hide-text" jsselect="offlineContentList" jscontent="hideText">
               </div>
             </div>
           </div>
           <div id="offline-content-suggestions"></div>
           <div id="offline-content-list-action">
-            <a class="link-button" onclick="launchDownloadsPage()"
-                jsselect="offlineContentList" jscontent="actionText">
+            <a class="link-button" onclick="launchDownloadsPage()" jsselect="offlineContentList" jscontent="actionText">
             </a>
           </div>
         </div>
@@ -106,35 +135,24 @@
     </div>
     <div id="buttons" class="nav-wrapper">
       <div id="control-buttons" hidden>
-        <button id="reload-button"
-            class="blue-button text-button"
-            onclick="trackClick(this.trackingId);
-                     reloadButtonClick(this.url);"
-            jsselect="reloadButton"
-            jsvalues=".url:reloadUrl; .trackingId:reloadTrackingId"
-            jscontent="msg"></button>
-        <button id="download-button"
-            class="blue-button text-button"
-            onclick="downloadButtonClick()"
-            jsselect="downloadButton"
-            jscontent="msg" jsvalues=".disabledText:disabledMsg">
+        <button id="reload-button" class="blue-button text-button" onclick="trackClick(this.trackingId);
+                     reloadButtonClick(this.url);" jsselect="reloadButton"
+          jsvalues=".url:reloadUrl; .trackingId:reloadTrackingId" jscontent="msg"></button>
+        <button id="download-button" class="blue-button text-button" onclick="downloadButtonClick()"
+          jsselect="downloadButton" jscontent="msg" jsvalues=".disabledText:disabledMsg">
         </button>
         <div id="save-page-for-later-button" class="hidden">
-          <a class="link-button" onclick="savePageLaterClick()"
-            jsselect="savePageLater"
-            jscontent="savePageMsg">
+          <a class="link-button" onclick="savePageLaterClick()" jsselect="savePageLater" jscontent="savePageMsg">
           </a>
         </div>
-        <div id="cancel-save-page-button" class="hidden"
-          onclick="cancelSavePageClick()"
-          jsselect="savePageLater"
+        <div id="cancel-save-page-button" class="hidden" onclick="cancelSavePageClick()" jsselect="savePageLater"
           jsvalues=".innerHTML:cancelMsg">
         </div>
       </div>
       <button id="details-button" class="secondary-button text-button small-link"
-         onclick="detailsButtonClick(); toggleHelpBox()" jscontent="details"
-         jsdisplay="(suggestionsDetails && suggestionsDetails.length > 0) || diagnose"
-         jsvalues=".detailsText:details; .hideDetailsText:hideDetails;"></button>
+        onclick="detailsButtonClick(); toggleHelpBox()" jscontent="details"
+        jsdisplay="(suggestionsDetails && suggestionsDetails.length > 0) || diagnose"
+        jsvalues=".detailsText:details; .hideDetailsText:hideDetails;"></button>
     </div>
     <div id="details" class="hidden">
       <div class="suggestions" jsselect="suggestionsDetails">
@@ -146,11 +164,10 @@
   <div id="sub-frame-error">
     <!-- Show details when hovering over the icon, in case the details are
          hidden because they're too large. -->
-    <div class="icon"
-        jseval="updateIconClass(this.classList, iconClass)"></div>
+    <div class="icon" jseval="updateIconClass(this.classList, iconClass)"></div>
     <div id="sub-frame-error-details" jsselect="summary" jsvalues=".innerHTML:msg"></div>
   </div>
-  
+
   <div id="offline-resources">
     <img id="offline-resources-1x" src="images/default_100_percent/offline/100-offline-sprite.png">
     <img id="offline-resources-2x" src="images/default_200_percent/offline/200-offline-sprite.png">
@@ -163,4 +180,5 @@
 
   <script src="./js/init.js"></script>
 </body>
+
 </html>
