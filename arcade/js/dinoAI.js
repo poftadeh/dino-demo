@@ -11,6 +11,8 @@ class DinoAI {
     this.cactusSmallProximity = 150;
     this.cactusLargeProximity = 150;
     this.pterodactylProximity = 150;
+    this.duckCount = 0;
+    this.jumpCount = 0;
   }
 
   learn() {
@@ -19,27 +21,45 @@ class DinoAI {
     }
   }
 
+  addBar(id) {
+    const element = document.querySelector(id);
+    const bar = document.createElement('span').classList.add('bar');
+    element.appendChild(bar);
+  }
+
   run() {
+    this.updateCounter('speed-stats', this.runner.currentSpeed.toFixed(2));
+    this.updateCounter('distance-stats', Math.round(this.runner.distanceRan / 100));
     if (!this.runner.crashed && this.horizonHasObstacles()) {
+      this.updateCounter('width-stats', this.horizon.obstacles[0].width);
       switch (this.horizon.obstacles[0].typeConfig.type) {
         case 'CACTUS_SMALL':
         case 'CACTUS_LARGE':
           this.dodgeCactus();
           break;
         case 'PTERODACTYL':
-            this.dodgePterodactyl();
+          this.dodgePterodactyl();
           break;
         default:
           console.log('This should never print');
       }
     } else if (this.runner.crashed) {
-      //this.learn();
-      setTimeout(() => document.dispatchEvent(new KeyboardEvent('keyup', { keyCode: 32, which: 32 })), 2000);
+      this.updateCounter('crash-stats', this.runner.playCount);
+      setTimeout(() => {
+        this.resetCounters();
+        document.dispatchEvent(new KeyboardEvent('keyup', { keyCode: 32, which: 32 }))
+      }, 2000);
     }
   }
 
+  resetCounters() {
+    this.jumpCount = 0;
+    this.duckCount = 0;
+    this.updateCounter('jump-stats', 0);
+    this.updateCounter('duck-stats', 0);
+  }
+
   dodgeCactus() {
-    // jump, but not if already jumping
     if (this.horizon.obstacles[0].xPos <= this.cactusLargeProximity) {
       this.jump();
     }
@@ -56,13 +76,14 @@ class DinoAI {
       // bird is eye-level
     } else if (this.horizon.obstacles[0].yPos > 75) {
       this.jump();
-    } 
+    }
   }
 
   jump() {
     if (!this.runner.tRex.jumping || this.runner.crashed) {
       console.log('jumping!');
       document.dispatchEvent(this.jumpKeyDown);
+      this.updateCounter('jump-stats', ++this.jumpCount)
       //setTimeout(() => document.dispatchEvent(this.jumpKeyUp), 600);
     }
   }
@@ -70,13 +91,24 @@ class DinoAI {
   duck() {
     if (!this.runner.tRex.ducking) {
       console.log('hasducked!');
+      this.updateCounter('duck-stats', ++this.duckCount)
       document.dispatchEvent(this.duckKeyDown);
       setTimeout(() => document.dispatchEvent(this.duckKeyUp), 250);
     }
   }
 
+  updateCounter(id, count) {
+    document.querySelector(`#${id} > .bar-number`).textContent = count;
+  }
+
   horizonHasObstacles() {
-    return this.horizon.obstacles.length > 0;
+    if (this.horizon.obstacles.length > 0) {
+      const obstacle = this.horizon.obstacles[0].typeConfig.type.split("_")[0].toLowerCase();
+      document.querySelector("#obstacle-image").setAttribute("src", `./images/${obstacle}.svg`);
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

@@ -21,49 +21,39 @@
 </head>
 
 <body id="t" style="font-family: $i18n{fontfamily}; font-size: $i18n{fontsize}">
-  
   <div class="hud">
     <div class="hud-title">WebDriver Playing Chrome Dino Game</div>
     <div class="panel-container">
       <div class="stats-panel">
         <div class="stats-panel-title">T-Rex Statistics:</div>
         <div class="stat-line" id="jump-stats">
-          <span class="stat-name">Jumps:</span><span class="bar"></span><span class="bar-number">23</span>
+          <span class="stat-name">Jumps:</span><span class="bar-number">0</span>
         </div>
         <div class="stat-line" id="duck-stats">
-          <span class="stat-name">Ducks:</span><span class="bar"></span><span class="bar-number">23</span>
+          <span class="stat-name">Ducks:</span><span class="bar-number">0</span>
         </div>
         <div class="stat-line" id="crash-stats">
-          <span class="stat-name">Crashes:</span><span class="bar"></span><span class="bar-number">23</span>
+          <span class="stat-name">Crashes:</span><span class="bar-number">0</span>
         </div>
+      </div>
+      <div class="stats-panel">
+        <div class="stats-panel-title">Next Obstacle:</div>
+        <img class="obstacle-image" id="obstacle-image" src="./images/cactus.svg" alt="obstacle">
+        <div class="stat-line" id="width-stats">
+          <span class="stat-name">Width:</span><span class="bar-number">23</span></span>
+        </div>
+      </div>
+      <div class="stats-panel">
+        <div class="stats-panel-title">Game Statistics:</div>
         <div class="stat-line" id="speed-stats">
-          <span class="stat-name">Speed:</span><span class="bar"></span><span class="bar-number">23</span>
+          <span class="stat-name">Speed:</span><span class="bar-number">23</span></span>
         </div>
-      </div>
-      <div class="stats-panel">
-          <div class="stats-panel-title">Next Obstacle:</div>
-          <img class="obstacle-image" src="./images/cactus.svg" alt="">
-          <div class="stat-line" id="duck-stats">
-            <span class="stat-name">Ducks:</span><span class="bar"></span><span class="bar-number">23</span>
-          </div>
-          <div class="stat-line" id="crash-stats">
-            <span class="stat-name">Crashes:</span><span class="bar"></span><span class="bar-number">23</span>
-          </div>
-      </div>
-      <div class="stats-panel">
-          <div class="stats-panel-title">T-Rex Statistics:</div>
-          <div class="stat-line" id="jump-stats">
-            <span class="stat-name">Jumps:</span><span class="bar"></span><span class="bar-number">23</span>
-          </div>
-          <div class="stat-line" id="duck-stats">
-            <span class="stat-name">Ducks:</span><span class="bar"></span><span class="bar-number">23</span>
-          </div>
-          <div class="stat-line" id="crash-stats">
-            <span class="stat-name">Crashes:</span><span class="bar"></span><span class="bar-number">23</span>
-          </div>
-          <div class="stat-line" id="speed-stats">
-            <span class="stat-name">Speed:</span><span class="bar"></span><span class="bar-number">23</span>
-          </div>
+        <div class="stat-line" id="distance-stats">
+          <span class="stat-name">Distance:</span><span class="bar-number">0</span></span>
+        </div>
+        <div class="stat-line" id="frame-stats">
+          <span class="stat-name">ms/Frame:</span><span class="bar-number">16.7</span></span>
+        </div>
       </div>
 
     </div>

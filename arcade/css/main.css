@@ -10,7 +10,7 @@ html {
 .hud {
   display: flex;
   flex-direction: column;
-  height: 17rem;
+  height: 13rem;
   width: 70rem;
   background-color: #34495e;
   color: var(--text-color);
@@ -63,12 +63,14 @@ html {
   font-size: 1.5rem;
   display: flex;
   align-items: center;
-  padding: 0 .5rem;
+  justify-content: space-around;
+  width: 10rem;
 }
 
 .stat-name {
   display: inline-block;
-  min-width: 6.5rem;
+  text-align: right;
+  min-width: 8rem;
 }
 
 .bar {
@@ -80,5 +82,7 @@ html {
 }
 
 .bar-number {
+  display: inline-block;
   margin-left: .5rem;
+  min-width: 5rem;
 }
