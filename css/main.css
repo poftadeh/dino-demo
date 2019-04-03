@@ -86,3 +86,33 @@ html {
   margin-left: .5rem;
   min-width: 5rem;
 }
+
+@media (min-width: 1800px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 900px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 600px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 599px) {
+  html {
+    font-size: 5px;
+  }
+}
