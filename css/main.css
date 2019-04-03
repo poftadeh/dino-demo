@@ -87,32 +87,26 @@ html {
   min-width: 5rem;
 }
 
-@media (min-width: 1800px) {
-  html {
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 1200px) {
+@media only screen and (max-width: 1780px) {
   html {
     font-size: 15px;
   }
 }
 
-@media (min-width: 900px) {
+@media only screen and (max-width: 950px) {
   html {
     font-size: 11px;
   }
 }
 
-@media (min-width: 600px) {
+@media only screen and (max-width: 770px)  {
   html {
-    font-size: 8px;
+    font-size: 9px;
   }
 }
 
-@media (max-width: 599px) {
+@media only screen and (max-width: 325px) {
   html {
-    font-size: 5px;
+    font-size: 4px;
   }
 }

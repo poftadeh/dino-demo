@@ -1056,9 +1056,9 @@ function getRandomNum(min, max) {
  * @param {number} duration Duration of the vibration in milliseconds.
  */
 function vibrate(duration) {
-  if (IS_MOBILE && window.navigator.vibrate) {
-    window.navigator.vibrate(duration);
-  }
+  // if (IS_MOBILE && window.navigator.vibrate) {
+  //   window.navigator.vibrate(duration);
+  // }
 }
 
 
